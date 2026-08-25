@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "e7f611ad-6fe9-4da5-9321-b1d60a037a25",
+    "timestamp": "2026-08-25T12:50:42.329Z",
+    "date": "2026-08-25T12:50:42.329Z",
+    "week": "2026-W35",
+    "weekStart": "2026-08-23T22:00:00.000Z",
+    "name": "Mischa",
+    "score": 0,
+    "witness": "Stijn",
+    "status": "goedgekeurd"
+  }
+]
