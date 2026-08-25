@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>SWAPPED OFFICE GAMES — HOOP SHOWDOWN</title>
-<meta name="viewport" content="width=1920, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Press+Start+2P&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -284,19 +284,25 @@
     animation:scrollLeft 34s linear infinite;
   }
   .qrbox{
-    display:flex; align-items:center; gap:0.7vw;
+    display:flex; align-items:center; gap:clamp(10px, 0.8vw, 18px);
+    flex:0 0 auto;
     background:var(--white);
-    border-radius:12px;
-    padding:0.5vh 0.8vw;
+    border-radius:16px;
+    padding:clamp(8px, 0.8vh, 12px) clamp(10px, 0.9vw, 18px);
   }
-  .qrbox img{ width:5.4vh; height:5.4vh; display:block; }
+  .qrbox img{
+    width:clamp(110px, 7.5vw, 150px);
+    height:clamp(110px, 7.5vw, 150px);
+    display:block;
+    flex:0 0 auto;
+  }
   .qrbox .qrtext{
     font-family:'Baloo 2', sans-serif;
     font-weight:700;
-    font-size:0.78vw;
+    font-size:clamp(12px, 0.78vw, 16px);
     color:var(--black);
     line-height:1.15;
-    max-width:9vw;
+    max-width:150px;
   }
 
   .statusline{
@@ -345,11 +351,17 @@
   }
   .score-dialog{
     position:relative; z-index:1;
-    width:min(760px, 92vw); max-height:92vh; overflow:auto;
+    width:min(760px, 94vw);
+    max-height:calc(100vh - 20px);
+    max-height:calc(100dvh - 20px);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    min-height:0;
     background:linear-gradient(180deg, #1a1d0e 0%, #090a07 100%);
     border:3px solid var(--lime);
     border-radius:24px;
-    padding:clamp(24px, 3.2vw, 44px);
+    padding:clamp(20px, 3.2vw, 44px);
     box-shadow:0 24px 80px rgba(0,0,0,0.72), 0 0 60px rgba(227,251,153,0.13);
   }
   .modal-close{
@@ -386,7 +398,16 @@
     color:var(--black); background:var(--lime); border-color:var(--lime);
   }
   .step-panel{ display:none; }
-  .step-panel.active{ display:block; animation:stepIn .2s ease-out; }
+  .step-panel.active{
+    display:flex;
+    flex:1 1 auto;
+    min-height:0;
+    overflow:auto;
+    overscroll-behavior:contain;
+    flex-direction:column;
+    padding:0 2px 2px;
+    animation:stepIn .2s ease-out;
+  }
   @keyframes stepIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
   .step-title{
     font-family:'Baloo 2',sans-serif; font-weight:800;
@@ -398,8 +419,10 @@
   }
   .person-option{
     border:2px solid rgba(255,255,255,.13); border-radius:14px;
-    padding:15px 10px; background:rgba(255,255,255,.055); color:white;
-    font:700 17px 'Baloo 2',sans-serif; cursor:pointer;
+    min-height:48px;
+    padding:12px 10px; background:rgba(255,255,255,.055); color:white;
+    font:700 clamp(15px, 1.05vw, 18px) 'Baloo 2',sans-serif; cursor:pointer;
+    overflow-wrap:anywhere;
     transition:border-color .15s ease, transform .15s ease, background .15s ease;
   }
   .person-option:hover{ transform:translateY(-2px); border-color:var(--skyblue); }
@@ -422,9 +445,10 @@
     align-items:center; gap:22px; max-width:470px; margin:20px auto 6px;
   }
   .counter-button{
-    aspect-ratio:1; border-radius:50%; border:3px solid var(--pink);
+    aspect-ratio:1; min-width:56px; min-height:56px;
+    border-radius:50%; border:3px solid var(--pink);
     background:rgba(247,193,217,.1); color:var(--pink);
-    font:800 48px/1 'Baloo 2',sans-serif; cursor:pointer;
+    font:800 clamp(38px, 3vw, 50px)/1 'Baloo 2',sans-serif; cursor:pointer;
   }
   .counter-button:last-child{ border-color:var(--lime); color:var(--lime); background:rgba(227,251,153,.1); }
   .counter-button:disabled{ opacity:.25; cursor:not-allowed; }
@@ -434,16 +458,33 @@
   }
   .counter-label{ text-align:center; color:var(--dim); margin-bottom:22px; }
   .modal-actions{
+    position:sticky;
+    bottom:0;
+    z-index:5;
     display:flex; justify-content:space-between; align-items:center; gap:12px;
-    margin-top:24px;
+    flex-wrap:wrap;
+    margin-top:auto;
+    padding-top:16px;
+    padding-bottom:2px;
+    background:linear-gradient(180deg, rgba(9,10,7,0), #090a07 28%);
   }
   .modal-button{
-    border:0; border-radius:999px; padding:13px 24px;
-    font:800 16px 'Baloo 2',sans-serif; cursor:pointer;
+    min-height:48px;
+    min-width:118px;
+    border:0; border-radius:999px; padding:12px 24px;
+    font:800 clamp(15px, 1vw, 17px) 'Baloo 2',sans-serif; cursor:pointer;
+    white-space:nowrap;
   }
   .modal-button.secondary{ color:white; background:rgba(255,255,255,.11); }
   .modal-button.primary{ color:var(--black); background:var(--lime); margin-left:auto; }
   .modal-button.primary:disabled{ opacity:.35; cursor:not-allowed; }
+  .modal-close:focus-visible,
+  .person-option:focus-visible,
+  .counter-button:focus-visible,
+  .modal-button:focus-visible{
+    outline:4px solid var(--skyblue);
+    outline-offset:3px;
+  }
   .save-summary{
     margin-top:18px; padding:14px 16px; border-radius:14px;
     background:rgba(227,251,153,.08); border:1px solid rgba(227,251,153,.22);
@@ -458,7 +499,7 @@
 
   @media (max-width:800px){
     html,body{ overflow:auto; }
-    .stage{ min-height:100vh; height:auto; padding:18px 14px; }
+    .stage{ min-height:100vh; min-height:100dvh; height:auto; padding:18px 14px; }
     .top-ticker{ font-size:11px; }
     .brandtag{ font-size:14px; }
     .livepill{ display:none; }
@@ -477,9 +518,45 @@
     .bottom-ticker{ width:100%; font-size:13px; }
     .qrbox{ display:none; }
     .statusline{ position:static; text-align:right; padding:6px 14px; font-size:10px; }
-    .score-dialog{ width:min(620px,96vw); padding:28px 18px 22px; }
-    .person-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .counter-wrap{ grid-template-columns:70px 1fr 70px; gap:14px; }
+    .modal-shell{ padding:10px; }
+    .score-dialog{ width:min(620px, calc(100vw - 16px)); padding:24px 16px 16px; border-radius:18px; }
+    .modal-close{ top:10px; right:10px; width:44px; height:44px; }
+    .modal-intro{ margin-bottom:16px; }
+    .step-indicator{ gap:6px; margin-bottom:18px; }
+    .step-indicator span{ padding:8px 5px; font-size:11px; }
+    .person-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+    .counter-wrap{ grid-template-columns:64px minmax(90px,1fr) 64px; gap:12px; }
+    .modal-actions{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; }
+    .modal-button{ width:100%; min-width:0; padding-inline:10px; }
+    .modal-button:only-child{ grid-column:1 / -1; }
+  }
+
+  @media (max-height:760px) and (min-width:801px){
+    .modal-shell{ padding:10px 2vw; }
+    .score-dialog{
+      max-height:calc(100vh - 12px);
+      max-height:calc(100dvh - 12px);
+      padding:16px 28px 14px;
+    }
+    .modal-close{ top:10px; right:10px; width:40px; height:40px; }
+    .modal-kicker{ margin-bottom:5px; }
+    .score-dialog h3{ font-size:34px; }
+    .modal-intro{ margin:5px auto 9px; font-size:13px; }
+    .step-indicator{ margin-bottom:10px; gap:7px; }
+    .step-indicator span{ padding:6px 6px; font-size:11px; }
+    .step-title{ font-size:24px; margin-bottom:8px; }
+    .person-grid{ gap:7px; }
+    .person-option{ min-height:42px; padding:7px 8px; font-size:15px; }
+    .guest-field{ margin-top:8px; }
+    .guest-field label{ margin-bottom:4px; font-size:13px; }
+    .guest-field input{ padding:9px 12px; }
+    .counter-wrap{ margin:8px auto 3px; grid-template-columns:64px minmax(110px,1fr) 64px; gap:16px; }
+    .counter-value{ font-size:72px; }
+    .counter-label{ margin-bottom:8px; }
+    .save-summary{ margin-top:10px; padding:9px 12px; }
+    .save-feedback{ min-height:18px; margin-top:7px; }
+    .modal-actions{ padding-top:10px; }
+    .modal-button{ min-height:44px; padding:9px 20px; }
   }
 
 
@@ -550,8 +627,8 @@
       <h4 class="step-title">Wie heeft er gegooid?</h4>
       <div class="person-grid" id="playerOptions"></div>
       <div class="guest-field" id="playerGuestField">
-        <label for="playerGuestName">Naam van de gast</label>
-        <input id="playerGuestName" type="text" maxlength="40" autocomplete="name" placeholder="Vul de naam in">
+        <label for="playerGuestName">Custom naam</label>
+        <input id="playerGuestName" type="text" maxlength="40" autocomplete="name" placeholder="Vul een custom naam in">
       </div>
       <div class="modal-actions">
         <button class="modal-button primary" id="goToScore" type="button" disabled>Volgende</button>
@@ -576,8 +653,8 @@
       <h4 class="step-title">Wie was de getuige?</h4>
       <div class="person-grid" id="witnessOptions"></div>
       <div class="guest-field" id="witnessGuestField">
-        <label for="witnessGuestName">Naam van de gastgetuige</label>
-        <input id="witnessGuestName" type="text" maxlength="40" autocomplete="name" placeholder="Vul de naam in">
+        <label for="witnessGuestName">Custom naam van de getuige</label>
+        <input id="witnessGuestName" type="text" maxlength="40" autocomplete="name" placeholder="Vul een custom naam in">
       </div>
       <div class="save-summary" id="saveSummary"></div>
       <div class="save-feedback" id="saveFeedback" aria-live="polite"></div>
@@ -608,7 +685,7 @@ const CONFIG = {
   PUBLIC_SITE_URL: "https://stijnswapped.github.io/officegames/",
 
   // Voeg later eenvoudig extra spelers toe aan deze lijst.
-  PLAYERS: ["Stijn", "Cas", "Mischa", "Dennis", "Rob", "Marco", "Esther", "Gast"],
+  PLAYERS: ["Stijn", "Cas", "Mischa", "Dennis", "Rob", "Marco", "Esther", "Custom"],
 
   REFRESH_MS: 45000,
   TOP_N: 8,
@@ -1091,21 +1168,21 @@ function renderPersonOptions(){
 
   CONFIG.PLAYERS.forEach(name => playerOptions.appendChild(makePersonButton(name, 'player')));
   CONFIG.PLAYERS
-    .filter(name => lower(name) === 'gast' || lower(name) !== lower(scoreDraft.playerName))
+    .filter(name => lower(name) === 'custom' || lower(name) !== lower(scoreDraft.playerName))
     .forEach(name => witnessOptions.appendChild(makePersonButton(name, 'witness')));
 }
 
 function selectPerson(type, choice){
-  const isGuest = lower(choice) === 'gast';
+  const isCustom = lower(choice) === 'custom';
   if(type === 'player'){
     scoreDraft.playerChoice = choice;
-    scoreDraft.playerName = isGuest ? norm(playerGuestName.value) : choice;
-    playerGuestField.classList.toggle('show', isGuest);
-    goToScore.disabled = isGuest ? !scoreDraft.playerName : false;
+    scoreDraft.playerName = isCustom ? norm(playerGuestName.value) : choice;
+    playerGuestField.classList.toggle('show', isCustom);
+    goToScore.disabled = isCustom ? !scoreDraft.playerName : false;
   }else{
     scoreDraft.witnessChoice = choice;
-    scoreDraft.witnessName = isGuest ? norm(witnessGuestName.value) : choice;
-    witnessGuestField.classList.toggle('show', isGuest);
+    scoreDraft.witnessName = isCustom ? norm(witnessGuestName.value) : choice;
+    witnessGuestField.classList.toggle('show', isCustom);
     saveScoreButton.disabled = !witnessIsValid();
     saveFeedback.textContent = '';
     saveFeedback.classList.remove('error');
