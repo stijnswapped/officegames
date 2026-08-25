@@ -42,5 +42,16 @@
     "score": 10,
     "witness": "joopie",
     "status": "goedgekeurd"
+  },
+  {
+    "id": "e219bd57-f4ee-495a-bbe7-1b3991c78695",
+    "timestamp": "2026-08-25T13:34:49.050Z",
+    "date": "2026-08-25T13:34:49.050Z",
+    "week": "2026-W35",
+    "weekStart": "2026-08-23T22:00:00.000Z",
+    "name": "buurmanus",
+    "score": 4,
+    "witness": "Rob",
+    "status": "goedgekeurd"
   }
 ]
