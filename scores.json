@@ -20,5 +20,16 @@
     "score": 2,
     "witness": "Stijn",
     "status": "goedgekeurd"
+  },
+  {
+    "id": "3d9e56eb-7745-4570-8242-7979d5d9799e",
+    "timestamp": "2026-08-25T13:04:30.872Z",
+    "date": "2026-08-25T13:04:30.872Z",
+    "week": "2026-W35",
+    "weekStart": "2026-08-23T22:00:00.000Z",
+    "name": "Stijn",
+    "score": 0,
+    "witness": "Cas",
+    "status": "goedgekeurd"
   }
 ]
